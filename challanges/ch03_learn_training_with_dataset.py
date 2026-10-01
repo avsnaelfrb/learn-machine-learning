@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
@@ -45,6 +46,26 @@ def main():
     print('\n--------Training complete!--------')
     print('\n--------Testing Procces--------\n')
     y_pred = model.predict(x_test)
+
+    plt.figure(figsize=(10, 6))
+    
+    plt.scatter(y_test, y_pred, alpha=0.7)
+    
+    # Garis ideal: prediction = actual
+    plt.plot(
+        [y_test.min(), y_test.max()],
+        [y_test.min(), y_test.max()],
+        linestyle='--'
+    )
+    
+    plt.xlabel('Actual Final Exam Score')
+    plt.ylabel('Predicted Final Exam Score')
+    plt.title('Actual vs Predicted Final Exam Score')
+    
+    plt.grid(True, alpha=0.2)
+    plt.tight_layout()
+    plt.savefig('ch03_actual_vs_predicted.png', dpi=150, bbox_inches='tight')
+    
     comparison_df = pd.DataFrame({
         # 'Data test' : x_test,
         'Actual': y_test,
