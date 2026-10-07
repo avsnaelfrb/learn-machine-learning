@@ -24,16 +24,16 @@ X = [
 # 2. Membuat model K-Means
 # Kita ingin mencari 3 kelompok
 model = KMeans(
-    n_clusters=2,
+    n_clusters=3,
     random_state=47,
-    n_init=10,
+    n_init='auto',
 )
 
 
 # 3. Training / mencari cluster
 model.fit(X)
 
-
+ 
 # 4. Melihat cluster setiap data
 labels = model.labels_
 
@@ -67,4 +67,4 @@ plt.xlabel("Jam Belajar")
 plt.ylabel("Nilai Ujian")
 plt.title("K-Means Clustering")
 
-plt.savefig('ch04_01.png', dpi=150, bbox_inches='tight')
+plt.savefig('images/ch04_01.png', dpi=150, bbox_inches='tight')
